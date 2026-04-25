@@ -1,10 +1,16 @@
-"use client";
+//server deer bish browser deer ene component run hiine
+"use client"; 
 import {useEffect, useState} from "react";
 export default function HomePage(){
+  //stores data that can change
   const [backendStatus, setBackendStatus] = useState("Checking backend... ");
+  //runs once when component loads, checks backend status
   useEffect(()=>{
+    //call backend
     fetch("http://localhost:8000/api/health")
+    //convert response to json
     .then((res) => res.json())
+    //use data to update backend status
     .then((data)=>{
       setBackendStatus(`${data.app} backend status: ${data.status}`);
     })
@@ -25,8 +31,19 @@ export default function HomePage(){
         <div className="rounded-2xl bg-[#FFF1EA] border border-[#F2D8C9] p-4">
           <p className="font-medium">Backend connection</p>
           <p className="text-[#8B7470] mt-1">{backendStatus}</p>
+          
         </div>
+        <div className="rounded-3xl bg-white p-6 border border-[#F2D8C9] shadow-sm mt-6">
+        <a
+  href="/chat"
+  className="rounded-2xl bg-[#D99A8B] px-5 py-3 font-semibold text-white hover:opacity-90"
+>
+  Open AI Chat
+</a></div>
       </div>
     </main>
   )
 }
+// useState - store changing data
+// useEffect - run code when component loads
+// map() - iterate over an array and return a new array

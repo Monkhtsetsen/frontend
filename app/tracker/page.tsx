@@ -13,6 +13,7 @@ export default function TrackerPage(){
     const [energy, setEnergy]=useState(5);
     const [note, setNote]=useState("");
     const [message, setMessage]=useState("");
+    //send data to backend to save in database
     async function saveMood(){
         if(!selectedMood){
             setMessage("Pick a mood first.");
