@@ -19,7 +19,7 @@ export default function TrackerPage(){
             setMessage("Pick a mood first.");
             return;
         }
-        const res = await fetch("http://localhost:8000/api/mood", {
+        const res = await fetch("http://localhost:8080/api/mood", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

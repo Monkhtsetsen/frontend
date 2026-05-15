@@ -16,7 +16,7 @@ export default function ChatPage() {
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/chat")
+    fetch("http://localhost:8080/api/chat")
       .then((res) => res.json())
       .then((data) => {
         setMessages(data.data);
@@ -48,7 +48,7 @@ export default function ChatPage() {
     setMessages((prev) => [...prev, tempUserMessage]);
 
     try {
-      const res = await fetch("http://localhost:8000/api/chat", {
+      const res = await fetch("http://localhost:8080/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
