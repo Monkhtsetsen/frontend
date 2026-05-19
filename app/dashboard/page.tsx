@@ -45,20 +45,20 @@ export default function DashboardPage() {
     useState<PeriodPrediction | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/mood")
+    fetch("/api/mood")
       .then((res) => res.json())
       .then((data) => setMoods(data.data || []))
       .catch(() => setMoods([]))
       .finally(() => setLoading(false));
 
-    fetch("http://localhost:8080/api/ai/insight")
+    fetch("/api/ai/insight")
       .then((res) => res.json())
       .then((data) => setAiInsight(data))
       .catch(() =>
         setAiInsight({ insight: "AI insight is not available right now." })
       );
 
-    fetch("http://localhost:8080/api/period/prediction")
+    fetch("/api/period/prediction")
       .then((res) => res.json())
       .then((data) => setPeriodPrediction(data.prediction))
       .catch(() => setPeriodPrediction(null));
@@ -82,13 +82,13 @@ export default function DashboardPage() {
 
       <nav className="flex items-center justify-between px-8 py-4 bg-white border-b-2 border-[#FFD6E8]">
         <a href="/" className="text-xl font-black text-[#E0387A] tracking-tight no-underline">
-          glowup ai ✦
+          SyncHer ✦
         </a>
         <div className="flex gap-2">
           {[
-            { label: "✨ Add mood", href: "/tracker", primary: true },
-            { label: "🌙 Cycle", href: "/period", primary: false },
-            { label: "🦄 AI Chat", href: "/chat", primary: false },
+            { label: "Add mood", href: "/tracker", primary: true },
+            { label: "Cycle", href: "/period", primary: false },
+            { label: "AI Chat", href: "/chat", primary: false },
           ].map((item) => (
             <a
               key={item.label}
@@ -112,7 +112,7 @@ export default function DashboardPage() {
             ✦ GlowUp AI
           </span>
           <h1 className="text-4xl font-black text-[#3B2F3F] mb-2">
-            Dashboard 🌈
+            Dashboard 
           </h1>
           <p className="text-[#80657F]">
             Your mood history, energy patterns, cycle phase, and small wins live

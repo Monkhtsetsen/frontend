@@ -56,11 +56,11 @@ export default function PeriodPage() {
   const [message, setMessage] = useState("");
 
   async function loadPeriodData() {
-    const entriesRes = await fetch("http://localhost:8080/api/period");
+    const entriesRes = await fetch("/api/period");
     const entriesData = await entriesRes.json();
     setEntries(Array.isArray(entriesData.data) ? entriesData.data : []);
 
-    const predictionRes = await fetch("http://localhost:8080/api/period/prediction");
+    const predictionRes = await fetch("/api/period/prediction");
     const predictionData = await predictionRes.json();
     setPrediction(predictionData.prediction);
   }
@@ -80,7 +80,7 @@ export default function PeriodPage() {
       setMessage("Start date is required 🌸");
       return;
     }
-    const res = await fetch("http://localhost:8080/api/period", {
+    const res = await fetch("/api/period", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

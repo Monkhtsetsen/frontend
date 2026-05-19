@@ -21,7 +21,7 @@ function TrackerContent() {
 
   async function saveMood() {
     if (!selectedMood) { setMessage(t("trackerNoMood") as string); return; }
-    const res = await fetch("http://localhost:8080/api/mood", {
+    const res = await fetch("/api/mood", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mood: selectedMood, energy, note }),
